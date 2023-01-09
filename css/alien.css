@@ -12,8 +12,9 @@
   --bp-lg: 62em;
   --bp-xl: 92em;
   /* Fonts */
-  --font-primary: "Raleway", sans-serif;
-  --font-monospace: "JetBrains Mono", monospace;
+  --font-primary: "Karla", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+  --font-monospace: "Roboto Mono", monospace;
   /* Sizes */
   --container-width: 95%;
   --container-max-width: ;
@@ -23,26 +24,26 @@
   --line-height: 1.4;
   --spacing: 1.25em;
   /* Colors */
-  --color-primary-50: #E1EEF4;
-  --color-primary-100: #C4DCE9;
-  --color-primary-200: #8CBCD4;
-  --color-primary-300: #5199BD;
-  --color-primary-400: #346D89;
-  --color-primary-500: #1E3F4F;
-  --color-primary-600: #18323F;
-  --color-primary-700: #122630;
-  --color-primary-800: #0D1A21;
-  --color-primary-900: #060C0F;
-  --color-secondary-50: #F6EEE4;
-  --color-secondary-100: #EEDFCE;
-  --color-secondary-200: #DCBC99;
-  --color-secondary-300: #CB9C67;
-  --color-secondary-400: #AF793C;
-  --color-secondary-500: #7D572B;
-  --color-secondary-600: #634422;
-  --color-secondary-700: #4C351A;
-  --color-secondary-800: #312211;
-  --color-secondary-900: #1B1209;
+  --color-primary-50: #f5f8f8;
+  --color-primary-100: #ddeae9;
+  --color-primary-200: #bad5d5;
+  --color-primary-300: #90b7b8;
+  --color-primary-400: #699698;
+  --color-primary-500: #497174;
+  --color-primary-600: #3d6164;
+  --color-primary-700: #344e51;
+  --color-primary-800: #2d3f42;
+  --color-primary-900: #283739;
+  --color-secondary-50: #fef7ee;
+  --color-secondary-100: #fcedd8;
+  --color-secondary-200: #f8d6b0;
+  --color-secondary-300: #f3b97e;
+  --color-secondary-400: #ed924a;
+  --color-secondary-500: #e87121;
+  --color-secondary-600: #da5c1c;
+  --color-secondary-700: #b54619;
+  --color-secondary-800: #90381c;
+  --color-secondary-900: #74301a;
   --color-nav: #122630;
   --color-nav-hover: #060C0F;
   --color-code: #57B257;
@@ -1058,15 +1059,18 @@ p {
  * Hyperlink styling
  */
 a {
-  color: var(--color-primary-700);
   text-decoration-skip-ink: auto;
   word-wrap: break-word;
   transition: 0.3s ease-in-out;
 }
 a:active, a:focus, a:hover {
-  color: var(--color-primary-900);
+  color: var(--color-primary-100);
   filter: drop-shadow(0 0 0.5em var(--color-secondary-100));
   font-weight: 700;
+}
+
+a:-webkit-any-link {
+  color: inherit;
 }
 
 /**
@@ -1093,7 +1097,7 @@ h2, .h2 {
 
 h3,
 .h3 {
-  color: var(--color-secondary-200);
+  color: var(--color-secondary-500);
   font-size: 1.25em;
 }
 
@@ -1104,10 +1108,10 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 @media (min-width: 40em) {
   h1, .h1 {
-    font-size: 3em;
+    font-size: 7em;
   }
   h2, .h2 {
-    font-size: 2em;
+    font-size: 5em;
   }
   h3, .h3 {
     font-size: 1.75em;
