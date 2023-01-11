@@ -94,9 +94,6 @@ body {
   box-shadow: inset 0 -.5em var(--color-secondary-500);
 }
 
-p {
-  text-align: left;
-}
 
 .innerS {
   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.11), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.038);
@@ -186,8 +183,9 @@ p {
 
 
 #home {
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -243,7 +241,6 @@ p {
 
 #work {
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,19 +256,86 @@ p {
 }
 
 #work h3 {
-  text-align: center;
-  padding: 0;
   font-size: 2em;
   font-weight: 400;
+  font-family: var(--font-secondary);
+  color: var(--color-primary-100);
 }
 
 video {
   margin-left: 6em;
   width: 80%;
   height: 80%;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  user-select: none;
+  pointer-events: none;
 }
 
+.text-box {
+  background-color: var(--color-primary-600);
+  height: fit-content;
+  border-radius: 3px;
+  padding: 20px;
+  margin-left: -80px;
+  z-index: 1;
+  text-align: right;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.275);
+}
+
+.text-box2 {
+  position: relative;
+  background-color: var(--color-primary-600);
+  height: fit-content;
+  border-radius: 3px;
+  padding: 20px;
+  margin-right: -80px;
+  z-index: 1;
+  text-align: left;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.275);
+}
+
+.featured::before {
+  content: "<";
+  font-family: var(--font-monospace);
+  margin-right: 3px;
+}
+
+.featured {
+  font-family: var(--font-monospace);
+  color: var(--color-secondary-500);
+  font-size: 14px;
+  margin-top: 3em;
+  margin-bottom: -1em;
+}
+
+.featured::after {
+  content: "/>";
+  font-family: var(--font-monospace);
+  margin-left: 3px;
+}
+
+#work a {
+  text-decoration: none;
+}
+
+.featured2::before {
+  content: "<";
+  font-family: var(--font-monospace);
+  margin-right: 3px;
+}
+
+.featured2 {
+  font-family: var(--font-monospace);
+  color: var(--color-secondary-500);
+  font-size: 14px;
+  margin-top: 1em;
+  margin-bottom: -1em;
+}
+
+.featured2::after {
+  content: "/>";
+  font-family: var(--font-monospace);
+  margin-left: 3px;
+}
 /* *****************************/
 /* ----- SECTION 4 - EXPERIENCE ------ */
 /* *****************************/
@@ -279,7 +343,6 @@ video {
 
 #experience {
   width: 100%;
-  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,13 +356,17 @@ video {
 }
 
 #experience p {
-  text-align: center;
+  text-align: left;
   padding: 0;
   font-size: 1em;
   font-weight: 400;
 }
 
-
+h6 {
+  color: var(--color-secondary-500);
+  font-family: var(--font-monospace);
+  font-weight: 600;
+}
 /* *****************************/
 /* ----- SECTION 5 - CONTACT ------ */
 /* *****************************/
@@ -341,6 +408,7 @@ video {
   left: 50px;
   top: -35px;
   position: absolute;
+  z-index: 1;
 }
 
 
@@ -356,11 +424,17 @@ video {
   padding: 3px;
   top: 115px;
   position: absolute;
+  z-index: 1;
 }
 
+.mapouter {
+  filter: grayscale(100%) blur(1px);
+  transition: 0.3s ease-in all;
+}
 
-
-
+.mapouter:hover {
+  filter: grayscale(100%) blur(0);
+}
 
 
 /* *****************************/
@@ -373,6 +447,10 @@ video {
   bottom: 0;
   width: 21px;
   height: 210px;
+}
+
+svg:hover #line-left {
+  transform: translateY(-8px);
 }
 
 #line-left > div {
@@ -461,8 +539,8 @@ video {
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 80%;
-    width: 80%;
+    height: 70%;
+    width: 70%;
     list-style: none;
     opacity: 0;
     transform: translate(-50%, -50%);
@@ -476,7 +554,7 @@ video {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 5vmin;
+    font-size: 40px;
     font-weight: bold;
     transition: transform .5s linear, opacity .5s linear;
     user-select: none;
@@ -485,4 +563,177 @@ video {
 .tags-cloud > .tag > .wrap {
     display: inline-block;
     transform: translateX(-50%) translateY(-50%);
+}
+
+
+/* *****************************/
+/* ------- SCROLLDOWN BUTTON ------ */
+/* *****************************/
+
+.chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  bottom: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: var(--color-primary-300);
+}
+
+.chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
+}
+
+/* *****************************/
+/* ------- CAROUSEL ------ */
+/* *****************************/
+
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-container img {
+  filter: grayscale(80%) blur(1px);
+  transition: 0.3s ease-in all;
+}
+
+.slideshow-container img:hover {
+  filter: sepia(0%) blur(0);
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 90%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 10;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: var(--color-primary-600);
+  color: black;
+}
+
+/* *****************************/
+/* ------- ACCORDION ------ */
+/* *****************************/
+
+.accordion {
+  background-color: var(--color-primary-200);
+  color: var(--grey4);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid var(--color-primary-200);
+  border-radius: 12px;
+  margin:10px 10px 10px 0px;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight:600;
+    font-family: 'Ubuntu', sans-serif;
+  transition: 0.4s;
+}
+.arrowup{
+  font-family: 'Ubuntu', sans-serif;
+  width:24px;
+  height:auto;
+  float:right;
+transform: rotate(180deg);
+}
+
+.active, .accordion:hover {
+    background-color: var(--color-primary-200);
+    box-shadow: inset 4px 4px 15px 0px #0000003f;
+}
+
+.panel {
+  padding: 0 15px;
+  display: none;
+  background-color: var(--color-primary-600);
+  overflow: hidden;
+}
+.accordionsection{
+  max-width:700px;
+  margin:0 auto;
+  background: var(--color-primary-600);
+  border-radius:12px;
+  padding:15px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.275);
+
 }

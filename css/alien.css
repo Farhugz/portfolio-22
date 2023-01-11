@@ -80,6 +80,9 @@
   }
 }
 
+.font-mono {
+  font-family: var(--font-monospace);
+}
 /* COLORS CLASS */
 .color-primary-50 {
   color: var(--color-primary-50);
@@ -1058,20 +1061,22 @@ p {
 /**
  * Hyperlink styling
  */
+
+
 a {
   text-decoration-skip-ink: auto;
+  text-decoration: none;
   word-wrap: break-word;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
+  color: var(--color-primary-200);
 }
 a:active, a:focus, a:hover {
-  color: var(--color-primary-100);
-  filter: drop-shadow(0 0 0.5em var(--color-secondary-100));
-  font-weight: 700;
+  color: var(--color-secondary-500);
+  transform: translateY(-8px);
 }
 
-a:-webkit-any-link {
-  color: inherit;
-}
+
+
 
 /**
  * Heading styling for h1 through h6 elements.
@@ -2555,5 +2560,3 @@ li.checkmark:before {
   background: #060C0F;
   background: linear-gradient(to top, #060C0F 0%, #1E3F4F 50%, #060C0F 100%);
 }
-
-/*# sourceMappingURL=alien.css.map */
