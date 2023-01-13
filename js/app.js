@@ -1,4 +1,87 @@
 // ------------------------------------------------ //
+// --------------- NAVBAR ON SCROLL ---------------- //
+// ------------------------------------------------ //
+
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+// ------------------------------------------------ //
+// --------------- ACTIVE ANIMATION ON SCROLL ---------------- //
+// ------------------------------------------------ //
+
+/*
+     * GO TOP ON LOAD
+     */
+window.onload = function () {
+  if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+  } else {
+      window.onbeforeunload = function () {
+          window.scrollTo(0, 0);
+      };
+  }
+}
+
+
+/*
+* INTERSECTION OBSERVER ANIMATION
+*/
+/* ========== reveal animation: scroll to 0 reset ========== */
+const resetRevealAnimation = () => {
+  if (window.scrollY === 0) {
+      console.log(0);
+      initOberverReveal();
+  }
+}
+window.addEventListener('load', resetRevealAnimation);
+
+/* ============== reveal animation: observe ============== */
+const observerAnime = new IntersectionObserver(function (entries, self) {
+  //console.log(entries);
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          let el = entry.target;
+          el.style.opacity = '1';
+
+          el.classList.add(el.dataset.reveal);
+          console.log(el);
+          self.unobserve(entry.target);
+      }
+  });
+}, {
+  root: null,
+  threshold: [1],
+  rootMargin: '0px 0px 0px 0px'
+});
+
+/* ============== reveal animation: init ============== */
+const initOberverReveal = () => {
+  let elsAnime = document.querySelectorAll('[data-reveal]');
+  elsAnime.forEach((el) => {
+      el.style.opacity = '0';
+      el.classList.remove(el.dataset.reveal);
+      observerAnime.observe(el);
+  });
+}
+window.addEventListener('load', initOberverReveal);
+
+
+// ------------------------------------------------ //
 // ------------------ CURSOR -------------------- //
 // ------------------------------------------------ //
 
@@ -273,33 +356,16 @@ class TagsCloud {
 }
 
 
-function main() {
+const main = () => {
   {
       const root = document.querySelector('.tags-cloud');
       const cloud = new TagsCloud(root);
 
       cloud.start();
   }
-
-  {
-      const cursor = document.getElementById('cursor');
-      const isActivated = false;
-
-      document.addEventListener('mousemove', (e) => {
-          if (!isActivated) {
-              cursor.classList.add('-activated');
-          }
-
-          cursor.style.transform =
-              `translateX(${e.clientX}px) translateY(${e.clientY}px)`;
-      });
-  }
 }
+window.addEventListener('load', main);
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  main();
-});
 
 // ------------------------------------------------ //
 // ------------------ CAROUSEL -------------------- //

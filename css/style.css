@@ -3,24 +3,12 @@
 /* *****************************/
 
 body {
-	display: grid;
-	grid-template-rows: 80px 1fr 70px;
-	grid-template-columns: 20% 1fr 15%;
-	gap: 0;
 	width: 100%;
-	height: 100%;
 }
 
-#navbar{
-	grid-area: 1 / 1 / 2 / 4;
-}
-#footer{
-	grid-area: 3 / 1 / 4 / 4;
-}
 #main{
-	grid-area: 2 / 1 / 3 / 4;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .container {
@@ -94,7 +82,6 @@ body {
   box-shadow: inset 0 -.5em var(--color-secondary-500);
 }
 
-
 .innerS {
   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.11), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.038);
   border-radius: 5px;
@@ -107,6 +94,7 @@ body {
   height: 80px;
   counter-reset: navitems;
   font-family: var(--font-monospace);
+  z-index: 2;
 }
 #navbar .logo {
   float: left;
@@ -164,6 +152,15 @@ body {
   display: block;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 
 @media (min-width: 48em) {
   .nav {
@@ -180,15 +177,18 @@ body {
 /* *****************************/
 /* ----- SECTION 1 - HOME ------ */
 /* *****************************/
-
+.vanta-canvas {
+  height: 100vh!important;
+}
 
 #home {
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 #home h1 {
@@ -201,9 +201,40 @@ body {
 #home h3 {
   text-align: center;
   padding: 0;
-  font-size: 2em;
   font-weight: 400;
+  margin-left: 5em;
+  color: var(--color-primary-200);
 }
+
+.typing-demo {
+  margin-top: 1em;
+  width: 32ch;
+  animation: typing 4s steps(22), blink .5s;
+  animation-iteration-count: infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: var(--font-monospace);
+  font-size: 2em;
+}
+
+#home svg {
+  user-select: none;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+
 
 /* *****************************/
 /* ----- SECTION 2 - ABOUT ME ------ */
@@ -367,10 +398,10 @@ h6 {
   font-family: var(--font-monospace);
   font-weight: 600;
 }
+
 /* *****************************/
 /* ----- SECTION 5 - CONTACT ------ */
 /* *****************************/
-
 
 #contact {
   width: 100%;
@@ -436,6 +467,27 @@ h6 {
   filter: grayscale(100%) blur(0);
 }
 
+/* *****************************/
+/* ----- SECTION 6 - FOOTER ------ */
+/* *****************************/
+
+#footer {
+  height: 60px;
+  width: 100vw;
+}
+
+#footer > .container {
+  padding-left: 2em;
+  padding-top: 1em;
+}
+
+#footer span {
+  font-family: var(--font-monospace);
+  font-size: var(--font-size);
+
+}
+
+
 
 /* *****************************/
 /* ----- BOTTOM LEFT/RIGHT LINE ------ */
@@ -494,7 +546,6 @@ svg:hover #line-left {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 /* *****************************/
 /* ------- ANIMATED TAG CLOUD ------ */

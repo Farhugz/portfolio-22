@@ -1075,7 +1075,10 @@ a:active, a:focus, a:hover {
   transform: translateY(-8px);
 }
 
-
+a:hover svg {
+  color: var(--color-secondary-500);
+  transform: translateY(-4px);
+}
 
 
 /**
