@@ -525,7 +525,7 @@ svg:hover #line-left {
   right: 3%;
   bottom: 0;
   width: 14px;
-  height: 272px;
+  height: 289px;
 }
 
 #line-right > div {
@@ -625,7 +625,7 @@ svg:hover #line-left {
   position: absolute;
   width: 28px;
   height: 8px;
-  bottom: 65px;
+  bottom: -95%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
