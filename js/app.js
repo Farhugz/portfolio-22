@@ -44,7 +44,7 @@ window.onload = function () {
 /* ========== reveal animation: scroll to 0 reset ========== */
 const resetRevealAnimation = () => {
   if (window.scrollY === 0) {
-      console.log(0);
+      // console.log(0);
       initOberverReveal();
   }
 }
@@ -59,7 +59,7 @@ const observerAnime = new IntersectionObserver(function (entries, self) {
           el.style.opacity = '1';
 
           el.classList.add(el.dataset.reveal);
-          console.log(el);
+          // console.log(el);
           self.unobserve(entry.target);
       }
   });
@@ -87,40 +87,51 @@ window.addEventListener('load', initOberverReveal);
 
 
 
-class ArrowPointer {
+
+class RingDot {
   constructor() {
     this.root = document.body
     this.cursor = document.querySelector(".curzr")
+    this.dot = document.querySelector(".curzr-dot")
 
-    this.position = {
-      distanceX: 0,
-      distanceY: 0,
-      distance: 0,
-      pointerX: 0,
-      pointerY: 0,
-    },
-    this.previousPointerX = 0
-    this.previousPointerY = 0
-    this.angle = 0
-    this.previousAngle = 0
-    this.angleDisplace = 0
-    this.degrees = 57.296
+    this.pointerX = 0
+    this.pointerY = 0
     this.cursorSize = 20
 
     this.cursorStyle = {
       boxSizing: 'border-box',
       position: 'fixed',
-      top: '0px',
-      left: `${ -this.cursorSize / 2 }px`,
+      display: 'flex',
+      top: `${ this.cursorSize / -2 }px`,
+      left: `${ this.cursorSize / -2 }px`,
       zIndex: '2147483647',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: `${ this.cursorSize }px`,
       height: `${ this.cursorSize }px`,
-      transition: '250ms, transform 100ms',
+      backgroundColor: '#fff0',
+      boxShadow: '0 0 0 1.25px #111920, 0 0 0 2.25px #F2F5F8',
+      borderRadius: '50%',
+      transition: '200ms, transform 100ms',
       userSelect: 'none',
       pointerEvents: 'none'
     }
 
+    this.dotStyle = {
+      boxSizing: 'border-box',
+      position: 'fixed',
+      zIndex: '2147483647',
+      width: '4px',
+      height: '4px',
+      backgroundColor: '#111920',
+      boxShadow: '0 0 0 1px #F2F5F8',
+      borderRadius: '50%',
+      userSelect: 'none',
+      pointerEvents: 'none',
+    }
+
     this.init(this.cursor, this.cursorStyle)
+    this.init(this.dot, this.dotStyle)
   }
 
   init(el, style) {
@@ -130,80 +141,52 @@ class ArrowPointer {
   }
 
   move(event) {
-    this.previousPointerX = this.position.pointerX
-    this.previousPointerY = this.position.pointerY
-    this.position.pointerX = event.pageX + this.root.getBoundingClientRect().x
-    this.position.pointerY = event.pageY + this.root.getBoundingClientRect().y
-    this.position.distanceX = this.previousPointerX - this.position.pointerX
-    this.position.distanceY = this.previousPointerY - this.position.pointerY
-    this.distance = Math.sqrt(this.position.distanceY ** 2 + this.position.distanceX ** 2)
-
-    this.cursor.style.transform = `translate3d(${this.position.pointerX}px, ${this.position.pointerY}px, 0)`
-
-    if (this.distance > 1) {
-      this.rotate(this.position)
+    if (event.target.localName === 'button' ||
+        event.target.localName === 'a' ||
+        event.target.onclick !== null ||
+        event.target.className.includes('curzr-hover')) {
+      this.hover(40)
     } else {
-      this.cursor.style.transform += ` rotate(${this.angleDisplace}deg)`
+      this.hoverout()
     }
+
+    this.pointerX = event.pageX + this.root.getBoundingClientRect().x
+    this.pointerY = event.pageY + this.root.getBoundingClientRect().y
+
+    this.cursor.style.transform = `translate3d(${this.pointerX}px, ${this.pointerY}px, 0)`
   }
 
-  rotate(position) {
-    let unsortedAngle = Math.atan(Math.abs(position.distanceY) / Math.abs(position.distanceX)) * this.degrees
-    let modAngle
-    const style = this.cursor.style
-    this.previousAngle = this.angle
+  hover(radius) {
+    this.cursor.style.width = this.cursor.style.height = `${radius}px`
+    this.cursor.style.top = this.cursor.style.left = `${radius / -2}px`
+  }
 
-    if (position.distanceX <= 0 && position.distanceY >= 0) {
-      this.angle = 90 - unsortedAngle + 0
-    } else if (position.distanceX < 0 && position.distanceY < 0) {
-      this.angle = unsortedAngle + 90
-    } else if (position.distanceX >= 0 && position.distanceY <= 0) {
-      this.angle = 90 - unsortedAngle + 180
-    } else if (position.distanceX > 0 && position.distanceY > 0) {
-      this.angle = unsortedAngle + 270
-    }
+  hoverout() {
+    this.cursor.style.width = this.cursor.style.height = `${this.cursorSize}px`
+    this.cursor.style.top = this.cursor.style.left = `${this.cursorSize / -2}px`
+  }
 
-    if (isNaN(this.angle)) {
-      this.angle = this.previousAngle
-    } else {
-      if (this.angle - this.previousAngle <= -270) {
-        this.angleDisplace += 360 + this.angle - this.previousAngle
-      } else if (this.angle - this.previousAngle >= 270) {
-        this.angleDisplace += this.angle - this.previousAngle - 360
-      } else {
-        this.angleDisplace += this.angle - this.previousAngle
-      }
-    }
-    style.transform += ` rotate(${this.angleDisplace}deg)`
-
+  click() {
+    this.cursor.style.transform += ` scale(0.75)`
     setTimeout(() => {
-      modAngle = this.angleDisplace >= 0 ? this.angleDisplace % 360 : 360 + this.angleDisplace % 360
-      if (modAngle >= 45 && modAngle < 135) {
-        style.left = `${ -this.cursorSize }px`
-        style.top = `${ -this.cursorSize / 2 }px`
-      } else if (modAngle >= 135 && modAngle < 225) {
-        style.left = `${ -this.cursorSize / 2 }px`
-        style.top = `${ -this.cursorSize }px`
-      } else if (modAngle >= 225 && modAngle < 315) {
-        style.left = '0px'
-        style.top = `${ -this.cursorSize / 2 }px`
-      } else {
-        style.left = `${ -this.cursorSize / 2 }px`
-        style.top = '0px'
-      }
-    }, 0)
+      this.cursor.style.transform = this.cursor.style.transform.replace(` scale(0.75)`, '')
+    }, 35)
   }
 
   remove() {
     this.cursor.remove()
+    this.dot.remove()
   }
 }
 
 (() => {
-  const cursor = new ArrowPointer()
+  const cursor = new RingDot()
   if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.onmousemove = function (event) {
       cursor.move(event)
+    }
+    document.onclick = function () {
+      cursor.click()
     }
   } else {
     cursor.remove()
