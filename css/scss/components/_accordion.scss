@@ -1,0 +1,44 @@
+/**
+ * @section accordion
+ */
+.accordion {
+  border-bottom: 1px solid var(--color-primary-200);
+}
+.accordion:nth-child(odd) {
+  border-right: 1px solid var(--color-primary-200);
+}
+.accordion:nth-child(even) {
+  border-left: 1px solid var(--color-primary-200);
+}
+.accordion > ul {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.accordion > ul li {
+  display: inline-block;
+  list-style-type: none;
+  pointer-events: none;
+}
+.accordion > ul li:first-child {
+  width: 85%;
+}
+.accordion > ul li:first-child h3 {
+  line-height: var(--line-height);
+  padding: 0;
+  margin: 0;
+}
+.accordion > ul li:last-child {
+  float: right;
+  text-align: center;
+  color: var(--color-secondary-200);
+}
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s ease;
+}
+.accordion-open {
+  max-height: 1000px;
+}
+

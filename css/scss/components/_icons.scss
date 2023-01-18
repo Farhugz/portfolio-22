@@ -1,0 +1,149 @@
+/**
+ * @section icons
+ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.ico {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+}
+
+.ico-svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  transition: 0.3s ease-in-out;
+  background-repeat: no-repeat;
+}
+
+.ico-u { /* unicode */
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  line-height: 1em;
+  transition: 0.3s ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+.ico-close:before {
+  content: "\2715";
+}
+
+.ico-menu:before {
+  content: "\2630";
+}
+
+.ico-expand:before {
+  display: inline-block;
+  content: "\2771";
+  transform: rotate(90deg);
+}
+
+.ico-shrink:before {
+  display: inline-block;
+  content: "\2770";
+  transform: rotate(90deg);
+}
+
+.ico-arrowNorth:before {
+  content: "\1F861";
+}
+
+.ico-arrowSouth:before {
+  content: "\1F863";
+}
+
+.ico-ellipsis:before {
+  content: "\22EF";
+}
+
+.ico-ellipsis-v:before {
+  content: "\22EE";
+}
+
+.ico-uptrack:before {
+  content: "\22A5";
+}
+
+.ico-downtrack:before {
+  content: "\22A4";
+}
+
+.ico-plus:before {
+  content: "\002B";
+}
+
+.ico-rocket:before {
+  content: "\1F680";
+}
+
+.ico-alienMonster:before {
+  content: "\1F47E";
+}
+
+.ico-heart:before {
+  content: "\1F496";
+}
+
+.ico-rose:before {
+  content: "\1F339";
+}
+
+.ico-rightAngle:before {
+  content: "\221F";
+}
+
+.ico-computerMouse:before {
+  content: "\1F5B0";
+}
+
+.ico-mouseFace:before {
+  content: "\1F42D";
+}
+
+.ico-alien:before {
+  content: "\1F47D";
+}
+
+.ico-newMoon:before {
+  content: "\1F311";
+}
+
+.ico-sun:before {
+  content: "\2600";
+}
+
+.ico-ClockwiseTriangle-HeadedOpenCircleArrow:before {
+  content: "\2B6E";
+}
+
+.ico-floppyDisc:before {
+  content: "\1F4BE";
+}
+
+.ico-gear:before {
+  content: "\2699";
+}
+
+.ico-west:before {
+  content: "\1F860";
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+
+  border-top-style: solid;
+  border-top-width: 1em;
+  margin-top: 1em;
+}

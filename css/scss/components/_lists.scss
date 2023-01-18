@@ -1,0 +1,135 @@
+/**
+ * List styling
+ */
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: square;
+  list-style-position: outside;
+}
+dl, dd {
+  margin: 0;
+  padding: 0;
+}
+dd {
+  margin-bottom: var(--spacing);
+}
+dt {
+  font-weight: bold;
+}
+/**
+ * @bugfix Prevent webkit from removing list semantics
+ * 1. Add a non-breaking space
+ * 2. Make sure it doesn't mess up the DOM flow
+ */
+%list-style-none {
+  list-style: none;
+  margin-left: 0;
+
+  &>li::before {
+    content: "\200B";
+    /* 1 */
+    position: absolute;
+    /* 2 */
+  }
+}
+/**
+ * Removes list styling.
+ * For semantic reasons, should only be used on unordered lists.
+ */
+.list-unstyled {
+  @extend %list-style-none;
+  margin-left: 0;
+}
+/**
+ * Display lists on a single line.
+ */
+.list-inline {
+  @extend %list-style-none;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+  padding: 0;
+
+  &>li {
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
+/*--------------------------------------------------------------
+# li title
+--------------------------------------------------------------*/
+ul.title li {
+  display: table;
+  width: 100%;
+  padding-bottom: 1em;
+}
+ul.title li div {
+  display: table-cell;
+}
+ul.title li div:first-child {
+  font-weight: 700;
+  width: 25%;
+  padding-right: 1em;
+}
+ul.title li div:last-child {
+  max-width: 75%;
+}
+
+/*--------------------------------------------------------------
+# li square
+--------------------------------------------------------------*/
+ul.fisheye {
+  list-style-position: outside;
+}
+ul.fisheye li {
+  list-style: none;
+  position: relative;
+  margin: 0.5em 0 0 2em;
+}
+ul.fisheye li:before {
+  content: '\25C9';
+  position: absolute;
+  left: -1.5em;
+  top: -0.35em;
+  font-size: 1.5em;
+}
+
+/*--------------------------------------------------------------
+# CHECKMARKS ALIGNED PARAGRAPH
+--------------------------------------------------------------*/
+li.unicode {
+  list-style: none;
+  position: relative;
+  padding-left: 3em;
+  padding-bottom: 1em;
+}
+li.checkmark, li.crossmark {
+  list-style: none;
+  position: relative;
+  padding-left: 3em;
+  padding-bottom: 1em;
+}
+li.checkmark:before, li.crossmark:before {
+  position: absolute;
+  font-size: 3em;
+  left: 0;
+  margin-top: -0.25em;
+}
+li.checkmark:before {
+  color: #00FF00;
+  content: '\2713';
+}
+
+.crossmark:before {
+  color: #FF0000;
+  content: '\2717';
+}
+
+

@@ -1,0 +1,207 @@
+/**
+ * @section Buttons
+ * Styling for CSS buttons.
+ */
+button,
+input {
+	overflow: visible;
+}
+button,
+select {
+	text-transform: none;
+}
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+.btn,
+.button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: all 100ms ease-in;
+}
+.btn,
+.button {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.btn.elevated,
+.button.elevated {
+	color: inherit;
+	background-color: transparent;
+	box-shadow: 0 0.125em 0.5em 0 var(--grey9-25), 0 0.25em 1em 0 var(--grey9-25);
+}
+.btn.outlined,
+.button.outlined {
+	color: inherit;
+	background-color: transparent;
+	border: 0.1em solid var(--grey9-50);
+}
+.btn.text,
+.button.text {
+	color: inherit;
+	background-color: transparent;
+}
+.btn:hover {
+	transform: scale(1.1);
+	font-weight: 700;
+}
+
+.disabled,
+.btn:disabled,
+.button:disabled {
+	cursor: not-allowed;
+	opacity: 0.3;
+}
+.disabled *,
+:disabled * {
+	pointer-events: none;
+}
+.btn.disabled:hover,
+.btn:disabled:hover {
+	box-shadow: none;
+}
+
+/**
+ * Active state
+ */
+.btn:active {
+	box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
+	outline: 0;
+}
+
+/**
+ * Button size
+ */
+.btn-large {
+	font-size: 1em;
+	line-height: normal;
+	padding: 0.6875em 0.9375em;
+}
+.btn-xlarge {
+	font-size: 1.25em;
+	line-height: normal;
+	padding: 0.87em 1.5em;
+}
+
+/**
+ * Block-level buttons
+ */
+.btn-block {
+	display: block;
+	margin-right: 0;
+	padding-right: 0;
+	padding-left: 0;
+	width: 100%;
+}
+
+/**
+ * General styles
+ */
+.btn,
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+/**
+ * Remove right margin on last element and inputs
+ */
+.btn:last-child,
+input.btn {
+	margin-right: 0;
+}
+
+// =============================================================
+//                           TOGGLE CHECKBOX
+// =============================================================
+.toggle-icon-wrapper {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.toggle-icon {
+	display: inline-block;
+	width: 3.75em;
+	height: 1.75em;
+	position: relative;
+	margin: 0;
+}
+.toggle-icon-thumb {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--grey3);
+	border-radius: 1em;
+	cursor: pointer;
+}
+.toggle-icon-thumb span:first-child {
+	margin-top: -0.2em;
+	margin-left: 0.1em;
+	color: #202020;
+}
+.toggle-icon-thumb span:last-child {
+	margin-top: -0.2em;
+	margin-right: 0.1em;
+	color: #f0f0f0;
+}
+.toggle-icon-thumb:before {
+	content: "";
+	text-align: center;
+	vertical-align: middle;
+	height: 1.5em;
+	width: 1.5em;
+	position: absolute;
+	left: 0.135em;
+	bottom: 0.125em;
+	border-radius: 50%;
+	background: var(--grey2);
+	/*	background: radial-gradient(ellipse at center, var(--grey9), var(--grey3));*/
+	transition: 0.4s all ease;
+}
+.theme-toggle.toggle-icon-thumb:before {
+	background: linear-gradient(to bottom right, #FFFFFF 0%, #FFFFFF 50%, #000000 50%, #000000 100%);
+}
+.toggle-icon-checkbox {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+.toggle-icon-checkbox:checked + .toggle-icon-thumb:before {
+	transform: translateX(1.9em);
+}

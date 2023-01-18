@@ -1,0 +1,175 @@
+/**
+ * @section strips
+ */
+$strips: 4;
+
+.strips {
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.strip .plus {
+  display: flex;
+}
+@media only screen and (orientation: landscape) {
+  .strips {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr;
+    max-height: 100%;
+  }
+  .strip {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    max-height: calc(100vh - 4*var(--spacing));
+    justify-content: center;
+    overflow: hidden;
+    .plus {
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        writing-mode: vertical-lr;
+      }
+    }
+    .content {
+      opacity: 0;
+      transform: scale(0);
+      width: 0;
+      h1,
+      p {
+        opacity: 0;
+        transition: opacity 300ms ease, transform 300ms ease;
+      }
+      h1 {
+        transform: translateY(-25%);
+      }
+      p {
+        transform: translateX(25%);
+        transition-delay: 300ms;
+      }
+    }
+    &.hoverin {
+      grid-column: 1 / span 5;
+      justify-content: flex-start;
+      padding-left: calc(2*var(--spacing));
+      .plus {
+        h3 {
+          opacity: 0;
+        }
+      }
+      .content {
+        opacity: 1;
+        padding: 4em;
+        transform: scale(1);
+        width: 100%;
+        h1,
+        p {
+          opacity: 1;
+        }
+        h1 {
+          transform: translateY(0);
+        }
+        p {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+  @for $i from 1 through $strips {
+    .strip:nth-child(#{$i}) {
+      &.hoverin {
+        grid-column: #{$i} / span 5;
+      }
+    }
+  }
+}
+@media only screen and (orientation: portrait) {
+  .strips {
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: auto;
+    max-height: calc(100vh - 4*var(--spacing));
+  }
+  .strip {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    max-width: calc(100vw - var(--spacing));
+    max-height: calc(100vh / 8);
+    justify-content: center;
+    overflow: hidden;
+    .plus {
+      flex-direction: row;
+      justify-content: center;
+      h3 {
+        display: block;
+        writing-mode: lr;
+      }
+    }
+    .content {
+      opacity: 0;
+      transform: scale(0);
+      width: 0;
+      max-height: calc(((100vh / 8) * 5) - 4*var(--spacing));
+      overflow-y: auto;
+      h1,
+      p {
+        opacity: 0;
+        transition: opacity 300ms ease, transform 300ms ease;
+      }
+      h1 {
+        transform: translateX(-25%);
+      }
+      p {
+        transform: translateY(25%);
+        transition-delay: 300ms;
+      }
+    }
+    &.hoverin {
+      grid-row: 1 / span 5;
+      align-items: flex-start;
+      max-height: calc(100vh / 8 * 5);
+      padding-top: var(--spacing);
+      .plus {
+        padding: 1em 0 0 0.5em;
+        h3 {
+          display: none;
+        }
+      }
+      .content {
+        opacity: 1;
+        padding: 1em;
+        transform: scale(1);
+        width: 100%;
+        h1,
+        p {
+          opacity: 1;
+        }
+        h1 {
+          transform: translateX(0);
+        }
+        p {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  @for $i from 1 through $strips {
+    .strip:nth-child(#{$i}) {
+      &.hoverin {
+        grid-row: #{$i} / span 5;
+      }
+    }
+  }
+}
+
+
+.strip:nth-child(even) {
+  background: #1E3F4F;
+  background: linear-gradient(to top, #1E3F4F 0%, #060C0F 50%, #1E3F4F 100%);}
+
+.strip:nth-child(odd) {
+  background: #060C0F;
+  background: linear-gradient(to top, #060C0F 0%, #1E3F4F 50%, #060C0F 100%);
+}

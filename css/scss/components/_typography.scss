@@ -1,0 +1,265 @@
+/**
+ * @section Typography
+ * Sets font styles for entire site
+ */
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-primary-700);
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+p {
+  margin: 0 0 var(--spacing);
+}
+
+/**
+ * Hyperlink styling
+ */
+a {
+  color: var(--color-primary-700);
+  text-decoration-skip-ink: auto;
+  word-wrap: break-word;
+  transition: .3s ease-in-out;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: var(--color-primary-900);
+    filter: drop-shadow(0 0 0.5em var(--color-secondary-100));
+    font-weight: 700;
+  }
+}
+
+/**
+ * Heading styling for h1 through h6 elements.
+ * Heading class lets you use one heading type for semantics, but style it as another heading type.
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  line-height: 1.2;
+  margin: 0 0 1em;
+  padding: 1em 0 0;
+  word-wrap: break-word;
+}
+
+h1, .h1 {
+  font-size: 2em;
+  font-weight: 800;
+  padding-top: 0.5em;
+}
+
+h2, .h2 {
+  font-size: 1.5em;
+}
+
+h3,
+.h3 {
+  color: var(--color-secondary-200);
+  font-size: 1.25em;
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  color: var(--color-secondary-200);
+  font-size: 1.15em;
+}
+
+@media (min-width: 40em) {
+  h1, .h1 {
+    font-size: 3em;
+  }
+  h2, .h2 {
+    font-size: 2em;
+  }
+  h3, .h3 {
+    font-size: 1.75em;
+  }
+  h4, h5, .h4, .h5 {
+    font-size: 1.4em;
+  }
+  h6, .h6 {
+    font-size: 1.15em;
+  }
+}
+
+/**
+ * Lines, Quotes and Emphasis
+ */
+
+/**
+ * Lines
+ */
+hr {
+  border: 0;
+  border-top: 1px solid var(--grey8);
+  margin: 2em auto;
+}
+
+/**
+ * Use a lighter yellow for better readability
+ */
+mark {
+  background: var(--color-highlight);
+  color: var(--grey1);
+}
+
+/**
+ * Blockquotes
+ */
+
+blockquote {
+  font-size: 1.1875em;
+  font-style: italic;
+  margin: 0 0 var(--spacing);
+  padding-left: 0.8125em;
+  padding-right: 0.8125em;
+}
+
+cite {
+  color: var(--grey8);
+  display: block;
+  font-size: 0.8125em;
+  padding-top: 1em;
+}
+
+/**
+ * Text sizes
+ */
+.text-062 {
+  font-size: 0.625em;
+}
+
+.text-075 {
+  font-size: 0.75em;
+}
+
+.text-087 {
+  font-size: 0.875em;
+}
+
+.text-093 {
+  font-size: 0.9375em;
+}
+
+.text-100 {
+  font-size: 1em;
+}
+
+.text-115 {
+  font-size: 1.15em;
+}
+
+.text-125 {
+  font-size: 1.25em;
+}
+
+.text-150 {
+  font-size: 1.50em;
+}
+
+.text-175 {
+  font-size: 1.75em;
+}
+
+.text-200 {
+  font-size: 2em;
+}
+
+.text-250 {
+  font-size: 2.5em;
+}
+
+.text-300 {
+  font-size: 3em;
+}
+
+.text-400 {
+  font-size: 4em;
+}
+
+.text-500 {
+  font-size: 4em;
+}
+
+.text-600 {
+  font-size: 6em;
+}
+
+/**
+ * Text weight
+ */
+.font-light {
+  font-weight: 200;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-xbold {
+  font-weight: 900;
+}
+
+/**
+ * Text styles
+ */
+.text-italic {
+  font-style: italic;
+}
+.text-light {
+  font-weight: 300;
+}
+.text-bold {
+  font-weight: 700;
+}
+.text-xbold {
+  font-weight: 900;
+}
+
+/**
+ * Text colors
+ */
+.text-muted {
+  color: var(--gray8);
+}
+
+/**
+ * Text vertical
+ */
+.text-lr {
+  writing-mode: vertical-lr;
+}
+
+.text-rl {
+  writing-mode: vertical-rl;
+}
+
+/**
+ * Text clamp
+ */
+.clamp {
+  position: relative;
+  opacity: 0;
+  display: inline-block;
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+}
+
+.clampEllipsis {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.clampFull {
+  display: none;
+}

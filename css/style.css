@@ -203,9 +203,9 @@ body {
   text-align: center;
   padding: 0;
   font-weight: 400;
-  margin-left: 5em;
   color: var(--color-primary-200);
 }
+
 
 .typing-demo {
   margin-top: 1em;
@@ -216,7 +216,16 @@ body {
   overflow: hidden;
   border-right: 3px solid;
   font-family: var(--font-monospace);
-  font-size: 2em;
+  font-size: 0.85em;
+}
+
+@media (min-width: 560px) {
+  .typing-demo {
+    font-size: 2em;
+  }
+  h3.typing-demo {
+    margin: 0 auto;
+  }
 }
 
 #home svg {

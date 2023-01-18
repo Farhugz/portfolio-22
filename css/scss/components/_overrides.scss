@@ -1,0 +1,192 @@
+/**
+ * @section Overrides
+ * Nudge and tweak alignment, spacing, and visibility.
+ */
+
+/**
+ * Text alignment
+ */
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center-vertical {
+  vertical-align: middle;
+}
+
+/**
+ * Floats
+ */
+.float-left {
+  float: left;
+}
+.float-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.float-right {
+  float: right;
+}
+
+/**
+ * Margins
+ */
+.no-margin-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+.margin-small,.margin-sm {
+  margin: 0.5em !important;
+}
+.margin {
+  margin: 1em !important;
+}
+.margin-large, .margin-lg {
+  margin: 2em !important;
+}
+.no-margin-top {
+  margin-top: 0 !important;
+}
+.margin-top {
+  margin-top: var(--spacing);
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.margin-bottom {
+  margin-bottom: var(--spacing) !important;
+}
+
+/**
+ * Padding
+ */
+.no-padding {
+  padding: 0 !important;
+}
+.padding-xxsmall, .padding-xxs {
+  padding: calc(var(--spacing) * 0.25) !important;
+}
+.padding-xsmall, .padding-xs {
+  padding: calc(var(--spacing) * 0.5) !important;
+}
+.padding-small, .padding-sm {
+  padding: calc(var(--spacing) * 0.75) !important;
+}
+.padding {
+  padding: var(--spacing) !important;
+}
+.padding-large, .padding-lg {
+  padding: calc(var(--spacing) * 1.5) !important;
+}
+.padding-xlarge, .padding-xl {
+  padding: calc(var(--spacing) * 2) !important;
+}
+.padding-xxlarge, .padding-xxl {
+  padding: calc(var(--spacing) * 3) !important;
+}
+.no-padding-top {
+  padding-top: 0 !important;
+}
+.padding-top {
+  padding-top: var(--spacing) !important;
+}
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+.padding-bottom {
+  padding-bottom: var(--spacing) !important;
+}
+.no-padding-left {
+  padding-left: 0 !important;
+}
+.padding-left {
+  padding-left: var(--spacing) !important;
+}
+.no-padding-right {
+  padding-right: 0 !important;
+}
+.padding-right {
+  padding-right: var(--spacing) !important;
+}
+
+/**
+ * Accessibility
+ */
+/*
+ * Hide only visually, but have it available for screen readers:
+ * @link https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  /* 1 */
+  width: 1px;
+}
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard
+ * @link https://www.drupal.org/node/897638
+ */
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/**
+ * Remove all animations and transitions for people that prefer not to see them
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/**
+ * Clear any floats
+ */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/**
+ * Text Select
+ */
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,3 +1,17 @@
+const maps_frame = () => {
+  const ifr = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22090.250590987896!2d6.125486373179405!3d46.204858358002085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c650693d0e2eb%3A0xa0b695357b0bbc39!2sGeneva!5e0!3m2!1sen!2sch!4v1674058687528!5m2!1sen!2sch" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+
+  document.querySelector('.gmap_canvas').innerHTML = ifr;
+}
+const wait_for_map = () => {
+  const tm = setTimeout(() => {
+    maps_frame();
+    clearTimeout(tm);
+  }, 2000);
+}
+window.addEventListener('load', wait_for_map)
+
+
 // ------------------------------------------------ //
 // --------------- NAVBAR ON SCROLL ---------------- //
 // ------------------------------------------------ //

@@ -1,0 +1,25 @@
+/**
+ * @section Code
+ * Styling for code and preformatted text.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace;
+  font-size: 1.15em;
+}
+
+pre, code {
+  color: var(--grey2);
+  background-color: var(--grey8);
+  display: block;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  overflow: auto;
+  padding: 0.8125em;
+  tab-size: 4;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
